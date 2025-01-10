@@ -89,7 +89,20 @@ function WeatherCard() {
   }
 
   const date = new Date();
+  const options = {
+    weekday: 'long', // Nama hari
+    day: '2-digit',  // Tanggal
+    month: 'short',  // Bulan singkat (Jan, Feb, dst.)
+    year: 'numeric'  // Tahun
+  };
 
+  const formattedParts = new Intl.DateTimeFormat('en-US', options)
+    .formatToParts(date)
+    .reduce((acc, part) => {
+      acc[part.type] = part.value;
+      return acc;
+    }, {});
+  const formattedDate = `${formattedParts.weekday}, ${formattedParts.day} ${formattedParts.month} ${formattedParts.year}`;
   return (
     <div className="w-full py-10 h-screen bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center px-4 lg:px-0">
       {error && (
@@ -133,10 +146,9 @@ function WeatherCard() {
                   <div className="text-4xl font-semibold text-center lg:text-left">
                     {data.name}, {data.sys.country}
                   </div>
-                  {console.log(data)}
                   {/* Date */}
                   <div className="text-base text-l ml-1">
-                    {date.getUTCDate()}/{date.getUTCMonth() + 1}/{date.getUTCFullYear()}
+                    {formattedDate}
                   </div>
                 </div>
               </div>
@@ -144,7 +156,7 @@ function WeatherCard() {
               <div className="my-10">
                 <div className="flex justify-center">
                   {/* Temperature */}
-                  <div className="text-[144px] leading-none font-light">
+                  <div className="text-[144px] leading-none ">
                     {parseInt(data.main.temp)}
                   </div>
                   {/* Celsius */}
