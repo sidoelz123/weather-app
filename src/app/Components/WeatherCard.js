@@ -210,8 +210,8 @@ function WeatherCard() {
                     </div>
                     <div className="flex flex-col text-sm">
                       Wind
-                      <div className="text-2xl">
-                        {data.wind.speed} m/s
+                      <div className="text-2xl flex">
+                        {data.wind.speed} <p className='text-sm ml-2'>m/s</p>
                       </div>
                     </div>
                   </div>
