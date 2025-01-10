@@ -91,7 +91,7 @@ function WeatherCard() {
   const date = new Date();
 
   return (
-    <div className="w-full h-screen bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center px-4 lg:px-0">
+    <div className="w-full py-10 h-screen bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center px-4 lg:px-0">
       {error && (
         <div className="bg-red-600 text-white p-4 rounded-full mb-4">
           {error}
@@ -141,7 +141,7 @@ function WeatherCard() {
                 </div>
               </div>
               {/* Card Body */}
-              <div className="my-20">
+              <div className="my-10">
                 <div className="flex justify-center">
                   {/* Temperature */}
                   <div className="text-[144px] leading-none font-light">
@@ -158,30 +158,30 @@ function WeatherCard() {
                 </div>
               </div>
               {/* Card Bottom */}
-              <div className="justify-center flex  gap-x-4">
+              <div className="justify-around flex gap-x-4">
                 <div className="flex justify-between gap-4 flex-col">
                   {/* Visibility Element */}
                   <div className="flex text-md items-center gap-x-2">
                     {/* Icon */}
-                    <div className="text-3xl">
+                    <div className="text-4xl">
                       <BsEye />
                     </div>
-                    <div className="">
+                    <div className="flex flex-col text-sm">
                       Visibility
-                      <span className="ml-2">
+                      <span className="text-2xl">
                         {data.visibility / 1000} KM
                       </span>
                     </div>
                   </div>
                   {/* Temperature Element */}
-                  <div className="flex items-center gap-x-2 mt-4 lg:mt-0">
+                  <div className="flex  items-center gap-x-2 mt-4 lg:mt-0">
                     {/* Icon */}
-                    <div className="text-3xl">
+                    <div className="text-4xl">
                       <BsThermometer />
                     </div>
-                    <div className="flex text-md">
+                    <div className="text-center text-sm">
                       Feels Like
-                      <div className="flex ml-2">
+                      <div className="flex text-2xl">
                         {parseInt(data.main.feels_like)}
                         <TbTemperatureCelsius />
                       </div>
@@ -190,14 +190,14 @@ function WeatherCard() {
                 </div>
                 <div className="flex justify-between flex-col">
                   {/* Humidity Element */}
-                  <div className="flex items-center gap-x-2 mt-4 lg:mt-0">
+                  <div className="flex items-center gap-x-2">
                     {/* Icon */}
-                    <div className="text-3xl">
+                    <div className="text-4xl">
                       <BsWater />
                     </div>
-                    <div className="text-md">
+                    <div className="text-sm flex flex-col">
                       Humidity
-                      <span className="ml-2">
+                      <span className="text-2xl">
                         {data.main.humidity} %
                       </span>
                     </div>
@@ -205,12 +205,12 @@ function WeatherCard() {
                   {/* Wind Element */}
                   <div className="flex items-center gap-x-2 mt-4 lg:mt-0">
                     {/* Icon */}
-                    <div className="text-3xl">
+                    <div className="text-4xl">
                       <BsWind />
                     </div>
-                    <div className="flex text-md">
+                    <div className="flex flex-col text-sm">
                       Wind
-                      <div className="flex ml-2">
+                      <div className="text-2xl">
                         {data.wind.speed} m/s
                       </div>
                     </div>
